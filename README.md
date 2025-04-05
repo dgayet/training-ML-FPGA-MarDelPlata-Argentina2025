@@ -9,4 +9,6 @@
 
 - Maynor Ballina, Ph. D student (M. B.) - International Centre for Theoretical Phyiscs and University of Trieste		
 
+**Invited speaker:**
+
 - Gustavo Sutter, Ph. D (G. S) - Universidad Autónoma de Madrid		
