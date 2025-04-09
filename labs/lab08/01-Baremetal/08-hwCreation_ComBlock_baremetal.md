@@ -107,7 +107,7 @@ cd labs/lab08/bd/Zedboard/
 4. Un archivo TCL puede ser cargado desde Vivado. Para recrear el diseño de bloque, necesitarás un archivo de comandos tcl, que en este caso es **bd_inference.tcl**. Para recrear el diseño de bloque, escribe en la consola Tcl:
 
 ``` bash
-source ./ML-zedboard-ap_ctrl_hs.tcl
+source ./ML-Zedboard-ap_ctrl_hs.tcl
 ```
 
 >**Nota:** Cuando activas la ejecución de un script Tcl en Vivado, aparecerá una barra de progreso y todas las operaciones dentro de Vivado se detendrán hasta que el script termine de ejecutarse.
