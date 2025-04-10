@@ -36,5 +36,4 @@ https://adeshpande3.github.io/adeshpande3.github.io/A-Beginner's-Guide-To-Unders
 https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html
 
 
-"Deep Learning", An MIT Press book, Ian Goodfellow and Yoshua Bengio and Aaron 
-http://www.deeplearningbook.org/
+"Deep Learning", An MIT Press book, Ian Goodfellow and Yoshua Bengio and Aaron: http://www.deeplearningbook.org/
