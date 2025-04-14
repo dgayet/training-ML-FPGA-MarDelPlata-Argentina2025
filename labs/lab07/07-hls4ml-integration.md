@@ -3,14 +3,7 @@
 ![alt text](../img/general/header.png)
 
 
-# Before starting:
-
-<!-- Be sure to pull the latest version of the git [prepository](https://gitlab.com/ictp-mlab/smr-3983). You can follow the steps detailed in this [guide](https://gitlab.com/ictp-mlab/smr-3983/-/wikis/Labs/Lab-0).
- -->
-
-# 1. Outline
-
-## 1.1. Introduction
+## 1. Introducción
 
 Una vez que se genera el modelo estudiante, el siguiente paso es generar el IP core para integrarlo en el diseño de hardware final. Para ello, se emplea **hls4ml** como un puente entre el modelo generado y la herramienta HLS, como se puede observar en la siguiente figura.
 
@@ -19,7 +12,7 @@ Una vez que se genera el modelo estudiante, el siguiente paso es generar el IP c
 
 <!-- ![Methodology](img/overallMethodologyNeuralNet.png) -->
 
-## 1.2. Objetivos
+## 1.1. Objetivos
 
 * Aprender cómo **hls4ml** puede utilizarse para traducir el modelo en un proyecto HLS.
 * Explorar las diferentes opciones que proporciona la biblioteca.
@@ -35,9 +28,6 @@ El objetivo principal de esta etapa es generar el IP core para la fase de infere
 5. Compilar y construir el proyecto HLS. 
 6. Exportar el IP core. 
 
-<!-- ## 2.1 Jupyter notebook 
-
-1. Para comenzar con el laboratorio, abre el archivo Jupyter Notebook **04_hls4ml-Integration.ipynb**. -->
 
 # 3. HLS simulación, síntesis e implementación
 
@@ -49,7 +39,6 @@ La verificación de la funcionalidad del bloque IP se realiza utilizando la herr
 
 1. Abre el proyecto que se encuentra en la carpeta **lab05 -> hlsPrj -> myproject_prj,** que fue generado con el archivo de Jupyter Notebook. De esta manera, el proyecto creado con hls4ml se cargará en Vitis HLS.
 
-<!-- ![alt text](../img/lab05/open_vitis_hls.png) -->
 
 
 3. Realiza las siguientes configuraciones en el proyecto:
@@ -181,7 +170,7 @@ La configuración debería verse como en la siguiente imagen.
     ```c
         // Opción 2
             if(layer13_out[0] > 0.5){
-            // result tiene el valor de la clase (del tipo int) que desea mostrar por la terminal.
+            // result tiene el valor de la clase (del tipo int) que desea mostrar por la terminal, por ejemplo 1 y 2.
                 *result = 1;
             } else{
                 *result = 2;
