@@ -118,7 +118,7 @@ La configuración debería verse como en la siguiente imagen.
         #pragma HLS INTERFACE axis register both port=input
         #pragma HLS INTERFACE ap_vld port=result register
         // #pragma HLS PIPELINE
-    }
+    
     ```
     
     Reemplazando las partes seleccionadas en el archivo **myproject.cpp**.
@@ -130,7 +130,7 @@ La configuración debería verse como en la siguiente imagen.
 6. Archivo **myproject_test.cpp** (test bench)
 
 - Ve a la carpeta **/home/student/Documents/cursoML2025/git/trainingMDQ2025/labs/lab07/src_hls**. 
-- Copia el archivo **myproject_test.cpp** en la carpeta **/home/student/Documents/cursoML2025/labs/lab05/hlsPrj/myproject_prj**. 
+- Copia el archivo **myproject_test.cpp** en la carpeta **/home/student/Documents/cursoML2025/labs/lab05/hlsPrj/**. 
 - Esto reemplazará el archivo precedente.
 
 7. Archivo **myproject.h**
@@ -138,13 +138,6 @@ La configuración debería verse como en la siguiente imagen.
 - Ve a la carpeta **/home/student/Documents/cursoML2025/git/trainingMDQ2025/labs/lab07/src_hls**.
 - Copia el archivo myproject.h en la carpeta: **/home/student/Documents/cursoML2025/labs/lab05/hlsPrj/myproject_prj/firmware**.
 - Esto reemplazará el archivo precedente.
-
-<!-- 
-8. Archivo **defines.h** 
-
-- Ve a la carpeta: **/home/student/Documents/cursoML2025/git/trainingMDQ2025/labs//lab07/src_hls**.
-- Copia el archivo defines.h en la carpeta **/home/student/Documents/cursoML2025/labs/lab05/hlsPrj/myproject_prj/firmware**. 
-- Esto reemplazará el archivo precedente. -->
 
 
 10. En Vitis HLS, en el panel **Explorer**, abre el archivo **Source -> myproject.cpp**. 
@@ -154,7 +147,7 @@ La configuración debería verse como en la siguiente imagen.
 
     ```c
 	input_t fc1_input_input[N_INPUT_1_1];
-    result_t layer10_out[N_LAYER_6];
+    result_t layer13_out[N_LAYER_11];
 
     axis_int_t val;
 
@@ -169,24 +162,15 @@ La configuración debería verse como en la siguiente imagen.
     		}	
     ```
 
-    El código anterior debe colocarse después de la línea **#endif** (línea número 36) en el archivo **myproject.cpp**.
+    El código anterior debe colocarse después de la línea **#endif** (línea número 32) en el archivo **myproject.cpp**.
 
     ![alt text](../img/lab07/HLS_change2.png)
 
-
-    🔴 In this part of the code, change the variable **input_2** for **fc1_input_input**. 
-    
-    ```c
-    nnet::dense<input_t, layer2_t, config2>(fc1_input_input, layer2_out, w2, b2); // fc1
-    ```
-
-    >**Noae:**  La variable podría llamarse **input_2** o algo diferente. Esto depende de cómo **hls4ml** haya exportado el modelo.
-
-    🔴 El siguiente código permite generar la salida con los resultados de la clasificaión. **Esta manera es válida solo si está usando el modelo..  De lo contrario, debe ADAPTAR la segunda opción**
+    🔴 El siguiente código permite generar la salida con los resultados de la clasificaión. **Esta manera es válida solo si está usando el modelo generado en el demo de MNIST QAP. De lo contrario, debe UTILIZAR y ADAPTAR la segunda opción**
 
      ```c
         // Opción 1
-            if(layer8_out[1] < 0){
+            if(layer12_out[1] < 0){
                 *result = 1;
             } else{
                 *result = 9;
@@ -196,7 +180,7 @@ La configuración debería verse como en la siguiente imagen.
 
     ```c
         // Opción 2
-            if(layer10_out[0] > 0.5){
+            if(layer13_out[0] > 0.5){
             // result tiene el valor de la clase (del tipo int) que desea mostrar por la terminal.
                 *result = 1;
             } else{
@@ -205,7 +189,7 @@ La configuración debería verse como en la siguiente imagen.
 
     ```
     
-    Agrega el código anterior antes de **\}** (última linea) en el archivo **myproject.cpp**.
+    Agrega el código anterior antes de **\}** (última línea) en el archivo **myproject.cpp**.
 
     ![alt text](../img/lab07/HLS_change3.png)
 
