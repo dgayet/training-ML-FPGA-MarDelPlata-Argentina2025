@@ -35,13 +35,11 @@ El objetivo principal de esta etapa es generar el IP core para la fase de infere
 
 La verificación de la funcionalidad del bloque IP se realiza utilizando la herramienta Vitis HLS. Para lograr esto, es necesario realizar varios cambios en los archivos fuente **.c** generados para agregar las interfaces correspondientes y probar el bloque IP. Por lo tanto, se deben seguir los siguientes pasos:
 
-1. Abre **Vitis HLS**.
-
-1. Abre el proyecto que se encuentra en la carpeta **lab05 -> hlsPrj -> myproject_prj,** que fue generado con el archivo de Jupyter Notebook. De esta manera, el proyecto creado con hls4ml se cargará en Vitis HLS.
+1. Abre **Vitis HLS**. Seguidamente, abre el proyecto que se encuentra en la carpeta **lab05 -> hlsPrj -> myproject_prj,** que fue generado con el archivo de Jupyter Notebook. De esta manera, el proyecto creado con hls4ml se cargará en Vitis HLS.
 
 
 
-3. Realiza las siguientes configuraciones en el proyecto:
+2. Realiza las siguientes configuraciones en el proyecto:
     
     - En el menú, ve a **Project -> Project Settings** y haz clic en **Synthesis**. 
 
@@ -57,7 +55,7 @@ La configuración debería verse como en la siguiente imagen.
 
 ![HLS project settings](../img/lab07/prjSettings.png){width=70%}
 
-4. Verifica las siguientes configuraciones relacionadas con la solución:. 
+3. Verifica las siguientes configuraciones relacionadas con la solución:. 
 
     - En el menú, ve a **Solution -> Solution Settings** y haz clic en **Synthesis**.
     - Configura el **Clock** en **12**, con un valor de incertidumbre de **12.5%**. El clock va a estar configurado para una frecuencia de 80 MHz.
@@ -73,7 +71,7 @@ La configuración debería verse como en la siguiente imagen.
 
 
 
-5. En este paso, se reemplazarán varias partes del archivo **myproject.cpp** dentro de Vitis HLS. **Las imágenes a continuación te ayudarán a identificar las diferentes partes del código y el lugar donde deben agregarse**.
+4. En este paso, se reemplazarán varias partes del archivo **myproject.cpp** dentro de Vitis HLS. **Las imágenes a continuación te ayudarán a identificar las diferentes partes del código y el lugar donde deben agregarse**.
 
     Para crear un proyecto HLS utilizando hls4ml con directivas de interfaz específicas, especialmente cuando se trabaja con interfaces _AXI stream_, es necesario modificar la **top level function** y especificar los pragmas de interfaz para los puertos de entrada y salida. Esto requiere el uso de una estructura específica para el flujo de datos, dependiendo de la herramienta HLS (en Vitis HLS, se usa _hls::stream_).
     
@@ -116,20 +114,20 @@ La configuración debería verse como en la siguiente imagen.
 
     
 
-6. Archivo **myproject_test.cpp** (test bench)
+5. Archivo **myproject_test.cpp** (test bench)
 
 - Ve a la carpeta **/home/student/Documents/cursoML2025/git/trainingMDQ2025/labs/lab07/src_hls**. 
 - Copia el archivo **myproject_test.cpp** en la carpeta **/home/student/Documents/cursoML2025/labs/lab05/hlsPrj/**. 
 - Esto reemplazará el archivo precedente.
 
-7. Archivo **myproject.h**
+6. Archivo **myproject.h**
 
 - Ve a la carpeta **/home/student/Documents/cursoML2025/git/trainingMDQ2025/labs/lab07/src_hls**.
 - Copia el archivo myproject.h en la carpeta: **/home/student/Documents/cursoML2025/labs/lab05/hlsPrj/myproject_prj/firmware**.
 - Esto reemplazará el archivo precedente.
 
 
-10. En Vitis HLS, en el panel **Explorer**, abre el archivo **Source -> myproject.cpp**. 
+7. En Vitis HLS, en el panel **Explorer**, abre el archivo **Source -> myproject.cpp**. 
 
 
     🔴 Agrega el siguiente código en  **myproject.cpp**. Este cambio permitirá desempaquetar el flujo de entrada (input stream) en un vector para que pueda ser utilizado por el algoritmo.
@@ -184,23 +182,23 @@ La configuración debería verse como en la siguiente imagen.
 
 Una vez que se completen las modificaciones del código, es momento de analizar cómo se comporta el bloque IP cuando se utilizan imagenes de MNIST como entradas.
 
-11. Ve al panel de **Flow Navigator** (en la esquina inferior izquierda). Bajo **C SIMULATION**, haz clic en **Run C Simulation**.
+8. Ve al panel de **Flow Navigator** (en la esquina inferior izquierda). Bajo **C SIMULATION**, haz clic en **Run C Simulation**.
 
     ![Flow Navigator HLS](../img/lab07/flowNavigator_hls.png)
 
 
-12. Aparecerá una ventana *C Simulation Dialog*. Haz clic en **OK**. La simulación comenzará. Espera los resultados.
+9. Aparecerá una ventana *C Simulation Dialog*. Haz clic en **OK**. La simulación comenzará. Espera los resultados.
 
     ![C Simulation Dialog](../img/lab07/popUp_simulation.png)
 
 
-13. Después de la simulación, en el panel de Flow Navigator, bajo **C SYNTHESIS**, haz clic en **Run C Synthesis**. Aparecerá una ventana emergente con configuraciones para la solución activa, mostrando los valores para el reloj, la parte del FPGA y el objetivo de flujo.
+10. Después de la simulación, en el panel de Flow Navigator, bajo **C SYNTHESIS**, haz clic en **Run C Synthesis**. Aparecerá una ventana emergente con configuraciones para la solución activa, mostrando los valores para el reloj, la parte del FPGA y el objetivo de flujo.
 Deja estas configuraciones tal como están y haz clic en el botón **OK**. Espera el informe de síntesis.
 
     ![Synthesis Dialog](../img/lab07/popUp_synth.png)
 
 
-14. El paso final es generar el bloque IP. En el panel **Flow Navigator** (en la esquina inferior izquierda), bajo **IMPLEMENTATION**, haz clic en **Export RTL**. En la opción _Display Name_, agrega el nombre **inference**. Haz clic en el botón **OK**. Espera hasta que se complete el proceso de exportación.
+11. El paso final es generar el bloque IP. En el panel **Flow Navigator** (en la esquina inferior izquierda), bajo **IMPLEMENTATION**, haz clic en **Export RTL**. En la opción _Display Name_, agrega el nombre **inference**. Haz clic en el botón **OK**. Espera hasta que se complete el proceso de exportación.
 
     ![Implementation Dialog](../img/lab07/popUp_impl.png)
 
